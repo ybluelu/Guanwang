@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安芯建材公司 - 专业建材供应商</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #f39c12;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #1e3c72;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #f39c12;
+            margin: 20px auto 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            color: #f39c12;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .services {
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .service-card p {
+            color: #666;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background: #f39c12;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #f39c12;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #e67e22;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            color: #999;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #1e3c72;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #f39c12;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-answer p {
+            margin: 20px 0;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 20px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">安芯<span>建材</span></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#products">产品中心</a></li>
+                    <li><a href="#services">服务项目</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>安芯建材公司</h1>
+            <p>专业建材供应商，为您提供优质的建筑材料和完善的服务</p>
+            <a href="#contact" class="btn">立即咨询</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2 class="section-title">关于我们</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>值得信赖的建材合作伙伴</h3>
+                <p>安芯建材公司成立于2010年，是一家专业从事建筑材料销售与配送的企业。多年来，我们始终坚持以客户为中心，以质量为生命，为广大客户提供优质的建筑材料和完善的服务。</p>
+                <p>公司拥有完善的供应链体系和专业的服务团队，产品涵盖水泥、钢材、砂石、瓷砖、涂料等多个品类，能够满足建筑工程的各类需求。</p>
+                <p>我们与国内外知名建材品牌建立了长期稳定的合作关系，确保为客户提供高品质的产品。同时，公司拥有大型仓储基地和专业的物流配送团队，能够快速响应客户需求。</p>
+                <p>我们秉承"诚信经营、质量第一、客户至上"的经营理念，致力于成为行业领先的建材供应商。</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">年行业经验</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">合作客户</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">成功项目</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">产品种类</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="安芯建材公司" style="width: 100%; height: 400px; object-fit: cover; border-radius: 10px;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="products">
+        <h2 class="section-title">产品中心</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image" style="background: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="product-info">
+                    <h3>水泥系列</h3>
+                    <p>提供各种标号的水泥，包括普通硅酸盐水泥、复合硅酸盐水泥等，质量稳定，强度高。</p>
+                    <div class="product-price">咨询报价</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: url('https://images.unsplash.com/photo-1590559899731-a3828395ff7a?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="product-info">
+                    <h3>钢材系列</h3>
+                    <p>螺纹钢、线材、型钢等各类钢材，规格齐全，符合国家标准，广泛应用于建筑工程。</p>
+                    <div class="product-price">咨询报价</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="product-info">
+                    <h3>砂石系列</h3>
+                    <p>河砂、机制砂、碎石等建筑材料，粒度均匀，含泥量低，满足混凝土搅拌需求。</p>
+                    <div class="product-price">咨询报价</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="product-info">
+                    <h3>瓷砖系列</h3>
+                    <p>各种规格和花色的瓷砖，包括抛光砖、釉面砖、仿古砖等，美观耐用。</p>
+                    <div class="product-price">咨询报价</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="product-info">
+                    <h3>涂料系列</h3>
+                    <p>内外墙涂料、防水涂料、地坪漆等，环保无味，附着力强，耐候性好。</p>
+                    <div class="product-price">咨询报价</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: url('https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=400&q=80'); background-size: cover; background-position: center;"></div>
+                <div class="product-info">
+                    <h3>门窗系列</h3>
+                    <p>铝合金门窗、塑钢门窗、木门等，款式多样，隔音隔热，安全防盗。</p>
+                    <div class="product-price">咨询报价</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section services" id="services">
+        <h2 class="section-title">服务项目</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚚</div>
+                <h3>配送服务</h3>
+                <p>专业配送团队，快速准时送达，确保您的工程进度不受影响。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>方案设计</h3>
+                <p>根据项目需求，提供专业的材料选型和用量建议，优化成本。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>质量检测</h3>
+                <p>严格的质量控制体系，每批产品都经过专业检测，确保质量合格。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3>技术咨询</h3>
+                <p>专业的技术团队，为您提供材料使用指导和施工建议。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>仓储服务</h3>
+                <p>大型仓储基地，充足的库存保障，满足您的紧急需求。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>售后服务</h3>
+                <p>完善的售后服务体系，及时处理各类问题，让您无后顾之忧。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="faq">
+        <h2 class="section-title">常见问题</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>如何选择合适的水泥标号？</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>水泥标号的选择主要取决于工程类型和使用环境。一般来说，普通民用建筑可选用32.5或42.5标号的水泥；高层建筑、桥梁等重要工程建议使用42.5或52.5标号的水泥。我们的技术团队可以根据您的具体项目需求提供专业建议。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>钢材的质量如何保证？</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>我们所有的钢材产品均来自正规钢厂，每批货物都附有质量保证书。同时，我们拥有专业的质量检测设备，对每批到货进行严格检测，确保产品符合国家标准。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>配送服务的范围和时间？</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>我们的配送服务覆盖周边100公里范围，一般情况下，订单确认后24小时内送达。对于紧急需求，我们提供加急配送服务，可在4-8小时内送达。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>产品价格是否含税？</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>我们的报价均为含税价格，可提供增值税专用发票。对于长期合作的大客户，我们还提供更优惠的价格政策。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>如何处理产品质量问题？</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>如发现产品质量问题，请在收到货物后48小时内联系我们。我们会立即安排专业人员进行检测，确认问题后将及时为您更换合格产品或办理退款。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>是否提供技术咨询服务？</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>是的，我们拥有专业的技术团队，可为客户提供材料选型、用量计算、施工指导等全方位的技术咨询服务。您可以通过电话、邮箱或到店咨询。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <h2 class="section-title">联系我们</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>联系方式</h3>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div>
+                        <strong>地址：</strong><br>
+                        XX省XX市XX区XX路XX号
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div>
+                        <strong>电话：</strong><br>
+                        400-XXX-XXXX
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <div>
+                        <strong>邮箱：</strong><br>
+                        contact@anxinjiancai.com
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">⏰</div>
+                    <div>
+                        <strong>营业时间：</strong><br>
+                        周一至周日 8:00-18:00
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>电话</label>
+                        <input type="tel" placeholder="请输入您的电话">
+                    </div>
+                    <div class="form-group">
+                        <label>需求</label>
+                        <textarea placeholder="请描述您的需求"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">提交咨询</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 安芯建材公司 版权所有</p>
+            <p>专业建材供应商 · 诚信经营 · 质量保证</p>
+            <div class="footer-links">
+                <a href="#home">首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#products">产品中心</a>
+                <a href="#services">服务项目</a>
+                <a href="#faq">常见问题</a>
+                <a href="#contact">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Q&A 折叠展开功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
